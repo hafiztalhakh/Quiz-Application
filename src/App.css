@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -21,13 +21,74 @@
 
 .App-link {
   color: #61dafb;
+} */
+
+.form-container{
+  padding-top: 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-heading{
+  text-align: center;
+}
+
+.form-button{
+  width: 100%;
+}
+
+.join-btn{
+  float: right;
+}
+
+.myDiv{
+  margin-top: -50px !important;
+}
+
+.quizNavBar{
+  /* margin-bottom: 0px !important; */
+  /* padding: 10px; */
+  min-height: 72vh !important;
+}
+
+.quiz-navs a{
+  color: #343a40 !important;
+  font-size: 18px;
+}
+
+/* .quiz-navs a:hover{
+  color: white !important;
+  background-color: #343a40 !important;
+  font-size: 18px;
+} */
+
+.back-button{
+  margin-top: -20px !important; 
+  margin-bottom: 50px !important;
+}
+
+.yo:hover{
+  color: white;
+  background-color: #343a40;
+  border-radius: 50%;
+}
+
+.panel-heading{
+  color: white;
+  background-color: #343a40;
+}
+
+.productkey-div{
+  /* padding: 20px; */
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: -20px;
+  color: white;
+  text-align: center;
+}
+
+.prdctBtn{
+  width:100%;
+  margin-top: 10px;
+  color: black;
+  background-color: white;    
 }

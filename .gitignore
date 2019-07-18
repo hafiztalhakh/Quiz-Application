@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+#DBConfigFile
+
+/srrc/config/Firebase.js
+
 # testing
 /coverage
 
