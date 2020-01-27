@@ -7,7 +7,7 @@
 
 #DBConfigFile
 
-/src/config/Firebase.js
+/src/Config/Firebase.js
 
 # testing
 /coverage

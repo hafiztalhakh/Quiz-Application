@@ -18,313 +18,309 @@ class RegisterationForm extends React.Component {
         const { userName, password, password2, name, } = this.state;
         const { loginTrue } = this.props;
         if (password === password2) {
-            firebase.auth().createUserWithEmailAndPassword(userName, password)
-                .then(() => {
-                    swal("You are Registered Successfully");
-                    const userID = firebase.auth().currentUser.uid;
-                    const dbRef = firebase.database().ref().child("Users").child(userID);
-                    dbRef.set({
-                        Full_Name: name,
-                        Email: userName,
-                        Courses: ['HTML', 'CSS', 'JavaScript',
+            firebase.auth().createUserWithEmailAndPassword(userName, password).then(() => {
+                swal("You are Registered Successfully");
+                const userID = firebase.auth().currentUser.uid;
+                const dbRef = firebase.database().ref().child("Users").child(userID);
+                dbRef.set({
+                    Full_Name: name,
+                    Email: userName,
+
+                    Courses: ['HTML', 'CSS', 'JavaScript',
+                    ],
+                    Courses_List: {
+                        Joined_Courses: [
+                            'You may not joined for any course'
                         ],
-                        Courses_List:{
-                            Joined_Courses: [  
-                                'You may not joined for any course'
-                            ],
+                    },
+                    Quiz_List: {
+                        HTML: {
+                            Quiz: ['Quiz1', 'Quiz2', 'Quiz3'],
+                            Quiz1: {
+                                Title: 'Quiz1',
+                                Status: 'Not-Attempted',
+                                Duration: 30,
+                                Total_Questions: 3,
+                                Passing_Marks: 50,
+                                Questions: [
+                                    {
+                                        Title: "What is JavaScript",
+                                        Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
+                                        Correct: 2
+                                    },
+                                    {
+                                        Title: "HTML Stands for",
+                                        Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
+                                        Correct: 1
+                                    },
+                                    {
+                                        Title: "Inside which HTML element do we put the JavaScript?",
+                                        Options: ["<script>", "JS", "Scripting", "Javascritp"],
+                                        Correct: 1
+                                    }
+                                ],
+                                Result: {
+                                    score: 0,
+                                    correct_ques: 0,
+
+                                },
+                            },
+                            Quiz2: {
+                                Title: 'Quiz2',
+                                Status: 'Not-Attempted',
+                                Duration: 30,
+                                Total_Questions: 3,
+                                Passing_Marks: 50,
+                                Questions: [
+                                    {
+                                        Title: "What is JavaScript",
+                                        Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
+                                        Correct: 2
+                                    },
+                                    {
+                                        Title: "HTML Stands for",
+                                        Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
+                                        Correct: 1
+                                    },
+                                    {
+                                        Title: "Inside which HTML element do we put the JavaScript?",
+                                        Options: ["<script>", "JS", "Scripting", "Javascritp"],
+                                        Correct: 1
+                                    }
+                                ],
+                                Result: {
+                                    score: 0,
+                                    correct_ques: 0,
+
+                                }
+                            },
+                            Quiz3: {
+                                Title: 'Quiz3',
+                                Status: 'Not-Attempted',
+                                Duration: 30,
+                                Total_Questions: 3,
+                                Passing_Marks: 50,
+                                Questions: [
+                                    {
+                                        Title: "What is JavaScript",
+                                        Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
+                                        Correct: 2
+                                    },
+                                    {
+                                        Title: "HTML Stands for",
+                                        Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
+                                        Correct: 1
+                                    },
+                                    {
+                                        Title: "Inside which HTML element do we put the JavaScript?",
+                                        Options: ["<script>", "JS", "Scripting", "Javascritp"],
+                                        Correct: 1
+                                    }
+                                ],
+                                Result: {
+                                    score: 0,
+                                    correct_ques: 0,
+
+                                }
+                            }
                         },
-                        Quiz_List: {
-                            HTML:{
-                                Quiz:['Quiz1', 'Quiz2', 'Quiz3'],
-                                Quiz1: {
-                                    Title: 'Quiz1',
-                                    Status: 'Not-Attempted',
-                                    Duration: 30,
-                                    Total_Questions: 3,
-                                    Passing_Marks: 50,
-                                    Questions: [
-                                        {
-                                            Title: "What is JavaScript",
-                                            Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
-                                            Correct: 2
-                                        },
-                                        {
-                                            Title: "HTML Stands for",
-                                            Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
-                                            Correct: 1
-                                        },
-                                        {
-                                            Title: "Inside which HTML element do we put the JavaScript?",
-                                            Options: ["<script>", "JS", "Scripting", "Javascritp"],
-                                            Correct: 1
-                                        }
-                                    ],
-                                    Result:{
-                                        score: 0,
-                                        correct_ques: 0,                                        
-
+                        CSS: {
+                            Quiz: ['Quiz1', 'Quiz2', 'Quiz3'],
+                            Quiz1: {
+                                Title: 'Quiz1',
+                                Status: 'Not-Attempted',
+                                Duration: 30,
+                                Total_Questions: 3,
+                                Passing_Marks: 50,
+                                Questions: [
+                                    {
+                                        Title: "What is JavaScript",
+                                        Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
+                                        Correct: 2
+                                    },
+                                    {
+                                        Title: "HTML Stands for",
+                                        Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
+                                        Correct: 1
+                                    },
+                                    {
+                                        Title: "Inside which HTML element do we put the JavaScript?",
+                                        Options: ["<script>", "JS", "Scripting", "Javascritp"],
+                                        Correct: 1
                                     }
-                                },
-                                Quiz2: {
-                                    Title: 'Quiz2',
-                                    Status: 'Not-Attempted',
-                                    Duration: 30,
-                                    Total_Questions: 3,
-                                    Passing_Marks: 50,
-                                    Questions: [
-                                        {
-                                            Title: "What is JavaScript",
-                                            Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
-                                            Correct: 2
-                                        },
-                                        {
-                                            Title: "HTML Stands for",
-                                            Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
-                                            Correct: 1
-                                        },
-                                        {
-                                            Title: "Inside which HTML element do we put the JavaScript?",
-                                            Options: ["<script>", "JS", "Scripting", "Javascritp"],
-                                            Correct: 1
-                                        }
-                                    ],
-                                    Result:{
-                                        score: 0,
-                                        correct_ques: 0,                                        
+                                ],
+                                Result: {
+                                    score: 0,
+                                    correct_ques: 0,
 
-                                    }
-                                },
-                                Quiz3: {
-                                    Title: 'Quiz3',
-                                    Status: 'Not-Attempted',
-                                    Duration: 30,
-                                    Total_Questions: 3,
-                                    Passing_Marks: 50,
-                                    Questions: [
-                                        {
-                                            Title: "What is JavaScript",
-                                            Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
-                                            Correct: 2
-                                        },
-                                        {
-                                            Title: "HTML Stands for",
-                                            Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
-                                            Correct: 1
-                                        },
-                                        {
-                                            Title: "Inside which HTML element do we put the JavaScript?",
-                                            Options: ["<script>", "JS", "Scripting", "Javascritp"],
-                                            Correct: 1
-                                        }
-                                    ],
-                                    Result:{
-                                        score: 0,
-                                        correct_ques: 0,                                        
-
-                                    }
                                 }
                             },
-                            CSS:{
-                                Quiz:['Quiz1', 'Quiz2', 'Quiz3'],
-                                Quiz1: {
-                                    Title: 'Quiz1',
-                                    Status: 'Not-Attempted',
-                                    Duration: 30,
-                                    Total_Questions: 3,
-                                    Passing_Marks: 50,
-                                    Questions: [
-                                        {
-                                            Title: "What is JavaScript",
-                                            Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
-                                            Correct: 2
-                                        },
-                                        {
-                                            Title: "HTML Stands for",
-                                            Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
-                                            Correct: 1
-                                        },
-                                        {
-                                            Title: "Inside which HTML element do we put the JavaScript?",
-                                            Options: ["<script>", "JS", "Scripting", "Javascritp"],
-                                            Correct: 1
-                                        }
-                                    ],
-                                    Result:{
-                                        score: 0,
-                                        correct_ques: 0,                                        
-
+                            Quiz2: {
+                                Title: 'Quiz2',
+                                Status: 'Not-Attempted',
+                                Duration: 30,
+                                Total_Questions: 3,
+                                Passing_Marks: 50,
+                                Questions: [
+                                    {
+                                        Title: "What is JavaScript",
+                                        Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
+                                        Correct: 2
+                                    },
+                                    {
+                                        Title: "HTML Stands for",
+                                        Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
+                                        Correct: 1
+                                    },
+                                    {
+                                        Title: "Inside which HTML element do we put the JavaScript?",
+                                        Options: ["<script>", "JS", "Scripting", "Javascritp"],
+                                        Correct: 1
                                     }
-                                },
-                                Quiz2: {
-                                    Title: 'Quiz2',
-                                    Status: 'Not-Attempted',
-                                    Duration: 30,
-                                    Total_Questions: 3,
-                                    Passing_Marks: 50,
-                                    Questions: [
-                                        {
-                                            Title: "What is JavaScript",
-                                            Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
-                                            Correct: 2
-                                        },
-                                        {
-                                            Title: "HTML Stands for",
-                                            Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
-                                            Correct: 1
-                                        },
-                                        {
-                                            Title: "Inside which HTML element do we put the JavaScript?",
-                                            Options: ["<script>", "JS", "Scripting", "Javascritp"],
-                                            Correct: 1
-                                        }
-                                    ],
-                                    Result:{
-                                        score: 0,
-                                        correct_ques: 0,                                        
+                                ],
+                                Result: {
+                                    score: 0,
+                                    correct_ques: 0,
 
-                                    }
-                                },
-                                Quiz3: {
-                                    Title: 'Quiz3',
-                                    Status: 'Not-Attempted',
-                                    Duration: 30,
-                                    Total_Questions: 3,
-                                    Passing_Marks: 50,
-                                    Questions: [
-                                        {
-                                            Title: "What is JavaScript",
-                                            Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
-                                            Correct: 2
-                                        },
-                                        {
-                                            Title: "HTML Stands for",
-                                            Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
-                                            Correct: 1
-                                        },
-                                        {
-                                            Title: "Inside which HTML element do we put the JavaScript?",
-                                            Options: ["<script>", "JS", "Scripting", "Javascritp"],
-                                            Correct: 1
-                                        }
-                                    ],
-                                    Result:{
-                                        score: 0,
-                                        correct_ques: 0,                                        
-
-                                    }
                                 }
                             },
-                            JavaScript:{
-                                Quiz:['Quiz1', 'Quiz2', 'Quiz3'],
-                                Quiz1: {
-                                    Title: 'Quiz1',
-                                    Status: 'Not-Attempted',
-                                    Duration: 30,
-                                    Total_Questions: 3,
-                                    Passing_Marks: 50,
-                                    Questions: [
-                                        {
-                                            Title: "What is JavaScript",
-                                            Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
-                                            Correct: 2
-                                        },
-                                        {
-                                            Title: "HTML Stands for",
-                                            Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
-                                            Correct: 1
-                                        },
-                                        {
-                                            Title: "Inside which HTML element do we put the JavaScript?",
-                                            Options: ["<script>", "JS", "Scripting", "Javascritp"],
-                                            Correct: 1
-                                        }
-                                    ],
-                                    Result:{
-                                        score: 0,
-                                        correct_ques: 0,                                        
-
+                            Quiz3: {
+                                Title: 'Quiz3',
+                                Status: 'Not-Attempted',
+                                Duration: 30,
+                                Total_Questions: 3,
+                                Passing_Marks: 50,
+                                Questions: [
+                                    {
+                                        Title: "What is JavaScript",
+                                        Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
+                                        Correct: 2
+                                    },
+                                    {
+                                        Title: "HTML Stands for",
+                                        Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
+                                        Correct: 1
+                                    },
+                                    {
+                                        Title: "Inside which HTML element do we put the JavaScript?",
+                                        Options: ["<script>", "JS", "Scripting", "Javascritp"],
+                                        Correct: 1
                                     }
-                                },
-                                Quiz2: {
-                                    Title: 'Quiz2',
-                                    Status: 'Not-Attempted',
-                                    Duration: 30,
-                                    Total_Questions: 3,
-                                    Passing_Marks: 50,
-                                    Questions: [
-                                        {
-                                            Title: "What is JavaScript",
-                                            Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
-                                            Correct: 2
-                                        },
-                                        {
-                                            Title: "HTML Stands for",
-                                            Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
-                                            Correct: 1
-                                        },
-                                        {
-                                            Title: "Inside which HTML element do we put the JavaScript?",
-                                            Options: ["<script>", "JS", "Scripting", "Javascritp"],
-                                            Correct: 1
-                                        }
-                                    ],
-                                    Result:{
-                                        score: 0,
-                                        correct_ques: 0,                                        
+                                ],
+                                Result: {
+                                    score: 0,
+                                    correct_ques: 0,
 
+                                }
+                            }
+                        },
+                        JavaScript: {
+                            Quiz: ['Quiz1', 'Quiz2', 'Quiz3'],
+                            Quiz1: {
+                                Title: 'Quiz1',
+                                Status: 'Not-Attempted',
+                                Duration: 30,
+                                Total_Questions: 3,
+                                Passing_Marks: 50,
+                                Questions: [
+                                    {
+                                        Title: "What is JavaScript",
+                                        Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
+                                        Correct: 2
+                                    },
+                                    {
+                                        Title: "HTML Stands for",
+                                        Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
+                                        Correct: 1
+                                    },
+                                    {
+                                        Title: "Inside which HTML element do we put the JavaScript?",
+                                        Options: ["<script>", "JS", "Scripting", "Javascritp"],
+                                        Correct: 1
                                     }
-                                },
-                                Quiz3: {
-                                    Title: 'Quiz3',
-                                    Status: 'Not-Attempted',
-                                    Duration: 30,
-                                    Total_Questions: 3,
-                                    Passing_Marks: 50,
-                                    Questions: [
-                                        {
-                                            Title: "What is JavaScript",
-                                            Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
-                                            Correct: 2
-                                        },
-                                        {
-                                            Title: "HTML Stands for",
-                                            Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
-                                            Correct: 1
-                                        },
-                                        {
-                                            Title: "Inside which HTML element do we put the JavaScript?",
-                                            Options: ["<script>", "JS", "Scripting", "Javascritp"],
-                                            Correct: 1
-                                        }
-                                    ],
-                                    Result:{
-                                        score: 0,
-                                        correct_ques: 0,                                        
+                                ],
+                                Result: {
+                                    score: 0,
+                                    correct_ques: 0,
 
+                                }
+                            },
+                            Quiz2: {
+                                Title: 'Quiz2',
+                                Status: 'Not-Attempted',
+                                Duration: 30,
+                                Total_Questions: 3,
+                                Passing_Marks: 50,
+                                Questions: [
+                                    {
+                                        Title: "What is JavaScript",
+                                        Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
+                                        Correct: 2
+                                    },
+                                    {
+                                        Title: "HTML Stands for",
+                                        Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
+                                        Correct: 1
+                                    },
+                                    {
+                                        Title: "Inside which HTML element do we put the JavaScript?",
+                                        Options: ["<script>", "JS", "Scripting", "Javascritp"],
+                                        Correct: 1
                                     }
+                                ],
+                                Result: {
+                                    score: 0,
+                                    correct_ques: 0,
+
+                                }
+                            },
+                            Quiz3: {
+                                Title: 'Quiz3',
+                                Status: 'Not-Attempted',
+                                Duration: 30,
+                                Total_Questions: 3,
+                                Passing_Marks: 50,
+                                Questions: [
+                                    {
+                                        Title: "What is JavaScript",
+                                        Options: ["Natural Language", "Scripting Language", "FrameWork", "None of these"],
+                                        Correct: 2
+                                    },
+                                    {
+                                        Title: "HTML Stands for",
+                                        Options: ["Hyper text markup language", "Language", "FrameWork", "None of these"],
+                                        Correct: 1
+                                    },
+                                    {
+                                        Title: "Inside which HTML element do we put the JavaScript?",
+                                        Options: ["<script>", "JS", "Scripting", "Javascritp"],
+                                        Correct: 1
+                                    }
+                                ],
+                                Result: {
+                                    score: 0,
+                                    correct_ques: 0,
+
                                 }
                             }
                         }
-                           
-                    }).then(() => {
-                        // console.log('saved');
-                     }).catch((error) => {
-                        // console.log(error.message);
-                        swal("database me bhand araha hai");
-                    })
-                    loginTrue();
-                }).catch(error => {
-                    var errorMessage = error.message;
-                    // console./log(errorMessage);
-                    swal('something went wrong');
+                    }
                 });
+
+                loginTrue();
+
+            }).catch(error => {
+                var errorMessage = error.message;
+                // console./log(errorMessage);
+                swal('something went wrong');
+            });
         }
         else {
             swal(`Password does not match`);
         }
     }
 
-    handle = event => {
+    handle = (event) => {
         this.setState({
             [event.target.name]: event.target.value,
         })

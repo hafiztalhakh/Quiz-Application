@@ -4,33 +4,14 @@ import firebase from '../Config/Firebase';
 import swal from 'sweetalert';
 import { Form, Button } from 'react-bootstrap';
 
-class LoginForm extends React.Component {
+class CreateQuiz extends React.Component {
 
     state = {
         userName: undefined,
         password: '',
-
     }
 
-    loginWithGoogle=()=>{
-        const provider = new firebase.auth.GoogleAuthProvider();
-
-        firebase.auth().signInWithRedirect(provider);
-
-        
-    }
-
-    login = () => {
-        const { userName, password } = this.state;
-        firebase.auth().signInWithEmailAndPassword(userName, password)
-            .then(() => {
-                // myAlert("Welcme");
-            })
-            .catch(error => {
-                var errorMessage = error.message;
-                swal(`Error ${errorMessage}`);
-            });
-    }
+    
 
     handle = event => {
         this.setState({
@@ -67,12 +48,8 @@ class LoginForm extends React.Component {
                     </Form.Group>
                 </Form>
                 <Button variant="dark" type="submit" className="form-button" onClick={this.login}>Login</Button>
-                <br/> <br/>
-                <Button variant="dark" type="submit" className="form-button" onClick={this.loginWithGoogle}>Login with Google</Button>
-                <br/> <br/>
-                <Button variant="dark" type="submit" className="form-button" onClick={this.login}>Login with Facebook</Button>
             </React.Fragment>
         );
     }
 }
-export default LoginForm;
+export default CreateQuiz;

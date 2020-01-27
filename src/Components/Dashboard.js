@@ -15,10 +15,10 @@ class Dashboard extends React.Component {
 
     componentDidMount() {
 
-        const { userID } = this.props;
+        // const { userID } = this.props;
         const { Joined_Courses } = this.state;
 
-        const fbRef = firebase.database().ref().child("Users").child(userID);
+        const fbRef = firebase.database().ref().child("Users").child(firebase.auth().currentUser.uid);
         fbRef.on('value', val => {
             this.setState({
                 Joined_Courses: val.val().Courses_List.Joined_Courses,
@@ -82,7 +82,7 @@ class Dashboard extends React.Component {
             <React.Fragment>
                 <Container fluid>
                     <Row>
-                        <Col md={4}>
+                        <Col sm={4}>
                             <Card border="dark">
                                 <Card.Header className="panel-heading" as="h5">Logged in User</Card.Header>
                                 <Card.Body>
@@ -93,15 +93,14 @@ class Dashboard extends React.Component {
                     </Row>
                     <br />
                     <Row>
-                        <Col md={5}>
+                        <Col sm={5}>
                             <Card border="dark">
                                 <Card.Header className="panel-heading" as="h5">Joined Courses</Card.Header>
                                 {
                                     var1 ?
                                         <Card.Body>
                                             <Row>
-                                                <Col md={10}><Card.Title className="inline-item">You may not joined for any course</Card.Title></Col>
-                                                {/* <Col md={2}> <Button onClick={() => this.quizInitiator("HTML")} className="join-btn" variant="dark">Open</Button></Col> */}
+                                                <Col sm={10}><Card.Title className="inline-item">You may not joined for any course</Card.Title></Col>
                                             </Row>
                                         </Card.Body>
                                         :
@@ -111,8 +110,8 @@ class Dashboard extends React.Component {
                                                     return (
                                                         <Card.Body key={index}>
                                                             <Row>
-                                                                <Col md={10}><Card.Title className="inline-item">{val}</Card.Title></Col>
-                                                                <Col md={2}> <Button onClick={() => this.quizInitiator(val)} className="join-btn" variant="dark">Open</Button></Col>
+                                                                <Col sm={10}><Card.Title className="inline-item">{val}</Card.Title></Col>
+                                                                <Col sm={2}> <Button onClick={() => this.quizInitiator(val)} className="join-btn" variant="dark">Open</Button></Col>
                                                             </Row>
                                                         </Card.Body>
                                                     )
@@ -126,7 +125,7 @@ class Dashboard extends React.Component {
                     </Row>
                     <br />
                     <Row>
-                        <Col md={10}>
+                        <Col sm={10}>
                             <Card border="dark">
                                 <Card.Header className="panel-heading" as="h5">Recomended Courses</Card.Header>
                                 {
@@ -138,8 +137,8 @@ class Dashboard extends React.Component {
                                         return (
                                             <Card.Body key={index}>
                                                 <Row>
-                                                    <Col md={10}><Card.Title className="inline-item">{val}</Card.Title></Col>
-                                                    <Col md={2}> {var2 ? <Button className="join-btn" disabled variant="dark">Join</Button> : <Button onClick={() => this.joinCourse(val)} id={val} className="join-btn" variant="dark">Join</Button>}</Col>
+                                                    <Col sm={10}><Card.Title className="inline-item">{val}</Card.Title></Col>
+                                                    <Col sm={2}> {var2 ? <Button className="join-btn" disabled variant="dark">Join</Button> : <Button onClick={() => this.joinCourse(val)} id={val} className="join-btn" variant="dark">Join</Button>}</Col>
                                                 </Row>
                                             </Card.Body>
                                         )

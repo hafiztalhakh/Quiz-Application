@@ -129,11 +129,11 @@ class QuizPanel extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={3}>
+                            <Col sm={3}>
                                 <QuizNavBar showQuizDetails={this.renderQuizDetails} Quiz_List={Quiz_List} course={course} />
                             </Col>
-                            <Col md={1}></Col>
-                            <Col md={8}>
+                            <Col sm={1}></Col>
+                            <Col sm={8}>
                                 <h3>Welcome to HTML Quiz</h3><br />
                                 {
                                     showQuizDetails &&
@@ -153,7 +153,7 @@ class QuizPanel extends React.Component {
                                         </Row>
                                         <br/>
                                         <Row>
-                                            <Col md={6}>
+                                            <Col sm={6}>
                                                 <ResultComponent Quiz_Data={Quiz_Data} Course={course} />
                                             </Col>
                                         </Row>
@@ -173,8 +173,8 @@ class QuizPanel extends React.Component {
                 {
                     showResult && <Container>
                         <Row>
-                            <Col md={3}></Col>
-                            <Col md={6}>
+                            <Col sm={3}></Col>
+                            <Col sm={6}>
                                 <ResultComponent Quiz_Data={Quiz_Data} Course={course} />
                             </Col>
                         </Row>
@@ -265,8 +265,8 @@ class QuizKeyComponent extends React.Component {
             <React.Fragment>
                 <Container>
                     <Row>
-                        <Col md={3}></Col>
-                        <Col md={6}>
+                        <Col sm={3}></Col>
+                        <Col sm={6}>
                             <div className="productkey-div">
                                 <h5>Quiz Title: {course} Quiz 1</h5>
                                 <br />
@@ -274,10 +274,10 @@ class QuizKeyComponent extends React.Component {
                                     <Form.Control type="password" name="key" onChange={this.handle} placeholder="Enter Product Key" />
                                 </Form>
                                 <Row>
-                                    <Col md={6}>
+                                    <Col sm={6}>
                                         <Button className="prdctBtn" variant="dark" onClick={this.checkKey}>Next</Button>
                                     </Col>
-                                    <Col md={6}>
+                                    <Col sm={6}>
                                         <Button className="prdctBtn" variant="dark" onClick={back}>Back</Button>
                                     </Col>
                                 </Row>

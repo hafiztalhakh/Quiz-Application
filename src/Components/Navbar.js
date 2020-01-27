@@ -10,8 +10,8 @@ class Navigationbar extends React.Component {
     }
 
     componentDidMount(){
-        const { usr } = this.props; 
-        console.log(usr);
+        const { usr, x } = this.props; 
+        // console.log(usr);
         if(usr != null){
             this.setState({
                 signInBtn: false,
@@ -25,6 +25,14 @@ class Navigationbar extends React.Component {
                 logout_button: false
             });
         }
+        if(x){
+            this.setState({
+                signInBtn: false,
+                register_button: false,
+                logout_button: true
+            });
+        }
+
     }
 
     eventClickOnNavbar = (x)=>{
@@ -53,7 +61,7 @@ class Navigationbar extends React.Component {
 
         return (
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+                <Navbar.Brand href="#home">Quiz App</Navbar.Brand>
                {
                   !usr &&  <Button variant="outline-info" id="signupBtn" className="ml-auto" onClick={() => this.eventClickOnNavbar('signup')}>Sign Up</Button>
                }

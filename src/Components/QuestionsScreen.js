@@ -13,6 +13,7 @@ class RenderQuestions extends React.Component {
     }
 
     selectedOptionHandler = (e, opt) => {
+        console.log(opt);
         this.setState({
             selectedOption: opt
         });
@@ -25,6 +26,7 @@ class RenderQuestions extends React.Component {
 
         // console.log(selectedOption);
         // console.log(Quiz_Data.Questions[next].Correct);
+        console.log( selectedOption, Quiz_Data.Questions[next].Correct)
         if (selectedOption === Quiz_Data.Questions[next].Correct) {
             this.setState({
                 correctCount: correctCount + 1
@@ -34,6 +36,8 @@ class RenderQuestions extends React.Component {
 
     nextHandler = (e) => {
 
+
+        console.log(e);
         this.checkResult();
         const { next } = this.state;
         this.setState({
@@ -58,15 +62,15 @@ class RenderQuestions extends React.Component {
             <React.Fragment>
                 <Container>
                     <Row>
-                        <Col md={4}></Col>
-                        <Col md={4}></Col>
-                        <Col md={4}>
+                        <Col sm={4}></Col>
+                        <Col sm={4}></Col>
+                        <Col sm={4}>
                             <RenderTimer time={Quiz_Data.Duration} title={Quiz_Data.Title} submitQuiz={this.submitQuiz} />
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={3}></Col>
-                        <Col md={6}>
+                        <Col sm={3}></Col>
+                        <Col sm={6}>
                             <br />
                             <Card border='dark' className="panel-card">
                                 <Card.Header as="h5" className="panel-heading">Question {next + 1} of {Quiz_Data.Title}</Card.Header>
@@ -89,7 +93,8 @@ class RenderQuestions extends React.Component {
                                         })
                                     }
                                     <br />
-                                    {selectedOption ? Quiz_Data.Questions.length === next + 1 ? <Button onClick={() => this.submitQuiz(Quiz_Data.Title)} className="join-btn" variant='dark'>Submit</Button>
+                                    {selectedOption ? Quiz_Data.Questions.length === next + 1 ? <
+                                        Button onClick={() => this.submitQuiz(Quiz_Data.Title)} className="join-btn" variant='dark'>Submit</Button>
                                         :
                                         <Button onClick={() => this.nextHandler()} className="join-btn" variant='dark'>Next</Button> : null}
                                 </Card.Body>
